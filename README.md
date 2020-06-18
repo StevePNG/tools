@@ -2,5 +2,5 @@
 Useful tools and extensions
 
 ## QueryDSLExtenstions
-- Adds extension to support join syntax
-- Supports PostgreSQL Jsonb query syntax 
+- Add Querydsl extension to support join syntax
+- Support Querydsl PostgreSQL Jsonb query syntax 
