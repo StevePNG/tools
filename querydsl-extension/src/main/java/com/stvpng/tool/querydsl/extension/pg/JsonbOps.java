@@ -34,7 +34,7 @@ public enum JsonbOps implements Operator {
             if (value.paramType.equals(clazz))
                 return value;
         }
-        throw new IllegalArgumentException(String.format("clazz %s is not supported", clazz));
+        throw new IllegalArgumentException(String.format("clazz %s is not supported", clazz.getCanonicalName()));
     }
 
     @Override

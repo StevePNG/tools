@@ -24,8 +24,10 @@ public class Thing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String name;
+
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    private String jsonData;
+    private String content;
 
 }

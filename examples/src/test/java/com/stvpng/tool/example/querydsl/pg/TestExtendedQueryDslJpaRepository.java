@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Configuration.class)
-public class ExtendedQueryDslJpaRepository {
+public class TestExtendedQueryDslJpaRepository {
 
     @Autowired
     ThingRepository userRepository;
@@ -26,7 +26,8 @@ public class ExtendedQueryDslJpaRepository {
     @Test
     public void testJsonQuery() {
         BooleanExpression expression =
-                Jsonb.of(QThing.thing.jsonData).eq("age", 20);
+                QThing.thing.name.endsWith("man")
+                        .and(Jsonb.of(QThing.thing.content).eq("age", 20));
 
         Iterable<Thing> all = userRepository.findAll(expression);
 
@@ -36,7 +37,8 @@ public class ExtendedQueryDslJpaRepository {
     @Before
     public void initData() {
         userRepository.save(Thing.builder()
-                .jsonData("{\"age\": 20, \"name\": \"john\"}")
+                .name("human")
+                .content("{\"age\": 20, \"name\": \"john\"}")
                 .build());
     }
 }
